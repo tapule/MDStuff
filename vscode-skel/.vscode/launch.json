@@ -1,0 +1,61 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Build MD ROM",
+            "type": "cppdbg",
+            "request": "launch",
+            //"target": "${workspaceRoot}/bin/rom.bin",
+            "program": "${workspaceRoot}/bin/rom.elf",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "${env:HOME}/mddev/mars/m68k-elf/bin/m68k-elf-gdb",    
+            "miDebuggerArgs": "-ex \"target remote | ${env:HOME}/mddev/tools/emus/blastem64/blastem ${workspaceRoot}/bin/rom.bin -D\"",
+            //"miDebuggerServerAddress": "localhost:1234",
+            //"debugServerPath": "${env:HOME}/mddev/tools/emus/blastem64/blastem",
+            //"debugServerArgs": "${workspaceRoot}/bin/rom.bin -D",
+            //"debugServerPath": "${env:HOME}/mddev/mars/m68k-elf/bin/m68k-elf-gdb",
+            //"debugServerArgs": "${workspaceRoot}/bin/rom.elf -ex \"target remote | ${env:HOME}/mddev/tools/emus/blastem64/blastem ${workspaceRoot}/bin/rom.bin -D\"",
+
+            "setupCommands": [
+                {
+                  "description": "Enable pretty-printing for gdb",
+                  "text": "-enable-pretty-printing",
+                  "ignoreFailures": false
+                }
+              ],   
+              "preLaunchTask": "Build ROM"                 
+        },
+        /*
+        {
+            "name": "Debug MD ROM",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/bin/rom.elf",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "${env:HOME}/mddev/mars/m68k-elf/bin/m68k-elf-gdb",    
+            "miDebuggerServerAddress": "localhost:6868",
+            "setupCommands": [
+                {
+                  "description": "Enable pretty-printing for gdb",
+                  "text": "-enable-pretty-printing",
+                  "ignoreFailures": false
+                }
+              ],   
+              //"preLaunchTask": "Debug ROM"                 
+        }
+        */
+    ]
+}
